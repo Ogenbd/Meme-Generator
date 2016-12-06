@@ -2,7 +2,7 @@
 
 var gMemes = [
             {id: 1, url: '../assets/img/1.jpg', keywords: ['sean', 'bean']},
-            {id: 2, url: '../assets/img/2.jpg', keywords: ['animal', 'akward']},
+            {id: 2, url: '../assets/img/2.jpg', keywords: ['animal', 'awkward']},
             {id: 3, url: '../assets/img/3.jpg', keywords: ['fry', 'cartoon']},
             {id: 4, url: '../assets/img/4.jpg', keywords: ['crazy', 'cartoon']},
             {id: 5, url: '../assets/img/5.jpg', keywords: ['person', 'cartoon']},
