@@ -1,2 +1,19 @@
 'use strict';
-console.log('Hello Meme');
+
+var gMemes = [
+    {id: '' , url: '' , keywords: [] }   
+]
+
+function buildImgLibary(){
+
+
+}
+
+
+
+
+function renderGallery(){
+
+
+}
+

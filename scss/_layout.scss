@@ -15,29 +15,3 @@ article {
   background-color: lightgreen; 
 }
 
-@media screen and (min-width:500px){
-  
-  .chosen-image{
-      width: 50%;
-      background-color: purple;
-}
-
-  .text-editor {
-  width: 50%;
-  background-color: teal;
-  }
-}
-
-@media screen and (max-width:499px){
-
-.chosen-image{
-      width: 100%;
-      background-color: purple;
-}
-
-  .text-editor {
-  width: 100%;
-  background-color: teal;
-  }
-
-}

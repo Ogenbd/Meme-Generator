@@ -15,3 +15,27 @@
 .form-group {
   margin: 1em 0;
 }
+
+.form-input{
+    width: 80%;
+    background-color: purple;
+}
+
+.form-info {
+  width: 20%;
+  background-color: teal;
+}
+
+
+@media screen and (max-width:499px){
+
+  .form-input{
+    width: 100%;
+    background-color: purple;
+  }
+
+  .form-info {
+    width: 100%;
+    background-color: teal;
+  }
+}
