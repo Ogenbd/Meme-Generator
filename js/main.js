@@ -14,6 +14,10 @@ var gMemes = [
             {id: 11, url: '../assets/img/11.jpg', keywords: ['person', 'cartoon']},
             {id: 12, url: '../assets/img/12.jpg', keywords: ['person', 'cartoon']}];
 
+function appInit() {
+    renderImgPreviews();
+}
+
 function renderImgPreviews() {
     var strHtml = '';
     var elGallery = document.querySelector('.gallery');
