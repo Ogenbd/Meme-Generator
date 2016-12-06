@@ -5,10 +5,13 @@
 @import 'vars';
 @import 'layout';
 @import 'base';
-@import 'forms';
+
 
 /* Components */
 @import 'main-nav';
 @import 'main-footer';
-
-
+@import 'editor';
+@import 'gallery';
+@import 'keywords';
+@import 'about';
+@import 'forms';

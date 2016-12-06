@@ -1,20 +1,3 @@
-/*----------  Containers  ----------*/
-
-.container {
-  width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 1em;
-}
-
-section{
-  height: 100px;
-}
-
-article {
-  height: 50px;
-  background-color: lightgreen; 
-}
-
 @media screen and (min-width:500px){
   
   .chosen-image{
