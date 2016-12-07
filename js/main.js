@@ -22,67 +22,47 @@ function renderImgPreviews() {
     var strHtml = '';
     var elGallery = document.querySelector('.innerGallery');
     gMemes.forEach(function (meme) {
-        strHtml += '<div class="meme"><div class="hexagon meme'+ meme.id 
-        +'"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
+        strHtml += '<div class="meme"><div class="hexagon meme' + meme.id
+            + '"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
     });
+
     elGallery.innerHTML = strHtml;
-    gMemes.forEach(function(meme){
-        var elMeme = document.querySelector('.meme'+ meme.id);
-        elMeme.style.backgroundImage = 'url('+meme.url+')';
+    gMemes.forEach(function (meme) {
+        var elMeme = document.querySelector('.meme' + meme.id);
+        elMeme.style.backgroundImage = 'url(' + meme.url + ')';
     })
 }
 
 
-function filterImg (){
+function filterImg() {
     var x = document.getElementById('search');
-    var text = "";
-        text += x.elements[0].value;
-    console.log(text);
+    var text = '';
+    text += x.elements[0].value;
 
+    var strHtml2 = '';
+    var elGallery = document.querySelector('.innerGallery');
+    var filterdImg = [];
 
-     var strHtml2 = '';
-     var elGallery = document.querySelector('.innerGallery');
-     var filterdImg = [];
-    // for (var i = 0; i < gMemes.length ; i++){
-    //      filterdImg = gMemes[i].filter(function (filtMeme) { 
-    //    //  for(var j = 0; j< filtMeme.keywords.length; j++){
-    //         return (filtMeme.keywords === text);
-    //      //}
-    //     });
-    // }
-
-
-    // for(var i = 0; i < gMemes.length; i++){
-
-    //     var obj = gMemes[i];
-        
-    //     for( var key in obj){
-    //         if(text === obj[keywords]){
-    //         gMemes[i].push(filterdImg);
-    //         }    
-    //     }
-    // }    
-    if (text ==="") renderImgPreviews()
-    else { 
-        gMemes.forEach(function(mem){
-            mem.keywords.forEach(function(element) {
-                if (element === text){
+    if (text === '') renderImgPreviews()
+    else {
+        gMemes.forEach(function (mem) {
+            mem.keywords.forEach(function (element) {
+                if (element === text) {
                     filterdImg.push(mem);
-                 }
+                }
             });
-    
+
         });
 
         filterdImg.forEach(function (meme) {
-            strHtml2 += '<div class="meme"><div class="hexagon meme'+ meme.id 
-            +'"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
+            strHtml2 += '<div class="meme"><div class="hexagon meme' + meme.id
+                + '"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
         });
 
-    
         elGallery.innerHTML = strHtml2;
-        filterdImg.forEach(function(meme){
-            var elMeme = document.querySelector('.meme'+ meme.id);
-            elMeme.style.backgroundImage = 'url('+meme.url+')';
-            })
+        filterdImg.forEach(function (meme) {
+            var elMeme = document.querySelector('.meme' + meme.id);
+            elMeme.style.backgroundImage = 'url(' + meme.url + ')';
+        })
     }
 }
