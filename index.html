@@ -23,7 +23,10 @@
             <a href="#getintouch">GET IN TOUCH</a>
         </nav>
         <!--the container that holds the gallery-->
-        <section class="gallery flex justify-center flex-wrap">
+        <section class="gallery">
+            <div class="innerGallery flex justify-center flex-wrap"></div>
+           <div class="search flex align-center">
+                <form id= "search"> <input type= "text" placeholder="type keyword"> <input type="submit" value="search" onclick="filterImg();return false;">  </form> </div>
 
         </section>
         <!--the container that holds meme creator-->
@@ -90,6 +93,7 @@
         <footer>
             footer
         </footer>
+        
     </main>
 
     <script src="js/main.js"></script>
