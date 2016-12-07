@@ -90,12 +90,38 @@
         <!--keep in touch-->
         <section class="flex flex-wrap">
             <a name="getintouch"></a>
-            <div class="form-input"></div>
-            <div class="form-info"></div>
+            <div class="form-input">
+                <h1 class="getIntouch"> get in touch! </h1>
+                <h4 class="getIntouch">In order to get in touch use the form below </h4>
+                <form id= "contact" class ="flex column form-group form-control">
+                    <input type="text" class= "colorForm" placeholder="Name">
+                    <input type="email" class= "colorForm" placeholder="E-mail" name="email">
+                    <input type="text" class= "colorForm" placeholder="Subject">
+                    <input type="text" class="textForm colorForm" placeholder="Text">
+                    <input type="submit" class="subButton" value="Send" onclick="sendLocalStorage();return false;">
+                </form>
+            </div>
+            <div class="form-info flex column justify-center">
+                <div class= "margin-top">Lorem ipsum dolor sit amet, adhuc commodo ut his,
+                     vim vocibus mnesarchum efficiantur id. Eum et errem consequat. 
+                     Duis nostrud ei quo, odio persius in eum. Movet nonumes ex usu, eam bonorum fabulas civibus et.</div>
+                <div class="flex padding2">
+                    <div><img src = "assets/img/map.png"></div>
+                    <div class= "padding">nowhere st. shitface, dushbegistan</div>
+                </div> 
+                <div flex class= "flex padding2">
+                    <div><img src = "assets/img/phone.png"></div>
+                    <div>+3345678635</div>
+                </div> 
+                <div flex class="flex padding2">
+                    <div><img src = "assets/img/email.png"></div>
+                    <div>whatwhat@yahoo.com</div>
+                </div>                 
+            </div>
         </section>
         <!--the footer-->
         <footer>
-            footer
+            all rights reserved to ogen & or inc.
         </footer>
         
     </main>
@@ -104,3 +130,6 @@
 </body>
 
 </html>
+
+
+

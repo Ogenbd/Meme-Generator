@@ -23,6 +23,9 @@
   display: flex;
 }
 
+.column {
+  flex-direction: column;
+}
 .align-center {
   align-items: center;
 }
@@ -58,6 +61,11 @@ align-items: flex-end;
 
 .padding {
   padding: 5px;
+}
+
+.padding2 {
+  padding: 10px;
+  margin: 10px;
 }
 
 .float-left {
