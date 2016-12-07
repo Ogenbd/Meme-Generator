@@ -1,4 +1,45 @@
+
 .main-nav {
-    background-color: red;
-    height: 70px;
+    background-color: var(--nav-background-color);
+    height: 63px;
+    margin-bottom: 60px;
+    padding-bottom: 5px;
+
+
+    img {
+        padding-top: 10px;
+    }
+
+    a {
+        padding: 0px 20px;
+        color: white;
+    }
+
+    a:hover {
+        color: #2eb398;
+        transition-duration: 0.3s;
+    }
+}
+
+.main-nav:after {
+    background-color: var(--nav-background-color);
+    transform: rotate(45deg); 
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.square {
+    background-color: var(--nav-background-color);
+    transform: rotate(45deg); 
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    
 }
