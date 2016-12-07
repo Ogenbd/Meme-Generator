@@ -87,6 +87,7 @@
 .or {
     background-image: url("../assets/img/or.png");
     margin:100px;
+    order:2
 
 }
 
@@ -98,6 +99,37 @@
   width: 70%;
   flex-shrink: 1;
 }
+.tumbrow {
+     display: flex;
+    align-items: flex-end;
+    padding:10px;
+    order:3;
+}
+.tumb {
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+    cursor: pointer;
+    //background-color: red;
+ 
+
+}
+
+//.facebook{
+    
+    //background-image:url("../assets/img/facebook_opt.png");
+ //   }
+
+// .twitter{
+    
+//     background-image:url("../assets/img/twitter_opt.jpg"); 
+//     }
+
+// .linkdin{
+    
+//     background-image:url("../assets/img/linkdin_opt.png"); 
+//     }
+
 
 @media screen and (max-width:700px){
 
