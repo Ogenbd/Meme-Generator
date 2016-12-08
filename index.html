@@ -24,19 +24,12 @@
             <a href="#getintouch">GET IN TOUCH</a>
             <div>
         </nav>
-        <!--the container that holds the gallery-->
-        <section class="gallery">
-            <div class="innerGallery flex justify-center flex-wrap"></div>
-           <div class="search flex align-center">
-                <form id= "search"> <input type= "text" placeholder="type keyword"> <input type="submit" value="search" onclick="filterImg();return false;">  </form> </div>
-
-        </section>
         <!--the container that holds meme creator-->
         <section class="meme-editor flex flex-wrap ">
             <!--the chosen picture-->
             <div class="chosen-image">
                 <div class="canvas-area">
-                    <canvas width="400" height="400" class="canvas">no image</canvas>
+                    <canvas class="canvas">no image</canvas>
                 </div>
             </div>
             <!--the text editor-->
@@ -65,10 +58,18 @@
                 </div>
             </div>
         </section>
-        <!--popular words-->
-        <section class="popular">
-            keyWords
+        <!--the container that holds the gallery-->
+        <section class="gallery">
+            <div class="innerGallery flex justify-center flex-wrap"></div>
+           <div class="search flex align-center">
+                <form id= "search"> <input type= "text" placeholder="type keyword"> <input type="submit" value="search" onclick="filterImg();return false;">  </form> </div>
+
         </section>
+
+        <!--popular words-->
+        <!--<section class="popular">
+            keyWords
+        </section>-->
         <!--about author section-->
         <section class="about">
             <a name="about"> </a>

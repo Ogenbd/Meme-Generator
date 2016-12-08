@@ -1,6 +1,10 @@
 .meme-editor {
+  width: 0;
+  visibility: hidden;
+  position: absolute;
   margin: 10px 0;
   text-align: center;
+  transition: width 0.5s ease;
 }
   
 .chosen-image{
@@ -9,13 +13,17 @@
 
 .text-editor {
   width: 50%;
-  background-color: teal;
   }
 
 
 .canvas-area {
-  width: 400px;
+  width: 100%;
   margin: auto auto;
+}
+
+.canvas {
+  width: 100%;
+  height: auto;
 }
 
 .bottom-text {
@@ -29,9 +37,5 @@
 }
 .text-editor {
   width: 100%;
-  background-color: teal;
   }
-
-  
 }
-
