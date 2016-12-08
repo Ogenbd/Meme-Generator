@@ -14,8 +14,10 @@ var gMemes = [
             {id: 11, url: '../assets/img/11.jpg', keywords: ['kid', 'you tell me']},
             {id: 12, url: '../assets/img/12.jpg', keywords: ['star trek', 'pikard']}];
 
+
 function appInit() {
     renderImgPreviews();
+    popSearch();
 }
 
 function renderImgPreviews() {
@@ -79,11 +81,24 @@ var y = document.getElementById('contact');
 
 
 console.log(cnt);
-localStorage.setItem('contact' , JSON.stringify(cnt.name)+ JSON.stringify(cnt.name)
- + JSON.stringify(cnt.email)+ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
+localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.email)
++ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
      y.elements[0].value= '' ;
      y.elements[1].value= '' ;
      y.elements[2].value= '' ;
      y.elements[3].value= '' ;
 
+}
+
+function popSearch (){
+   var popWords = {};
+   for (var i = 0; i < gMemes.length; i++){
+       //for (var j=0; j< gMemes[i].keywords; j++){ 
+         for (var j = 0; j < gMemes[i].keywords.length; j++){
+           if (popWords[gMemes[i].keywords[j]]) popWords[gMemes[i].keywords[j]]++;
+           else popWords[gMemes[i].keywords[j]] = 1;
+         }
+       // }
+   }
+   console.log(popWords);
 }
