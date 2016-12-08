@@ -3,6 +3,7 @@
 var gPopWords = {};
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
+var gImg;
 var gTopTxt=  { align: 'center',
                 size: 30,
                 font: 'impact',
@@ -98,6 +99,7 @@ function fontSize(input, mark) {
         if(mark === 'plus') gBottomTxt.size += 4;
         else {gBottomTxt.size -= 4}
     }
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 // takes clicked meme and sets it up on canvas
@@ -110,8 +112,8 @@ function memePicked(memeId) {
 }
 
 function drawOnCanvas(memeUrl) {
-    var img = new Image();
-    img.src = memeUrl;
+    gImg = new Image();
+    gImg.src = memeUrl;
 
     img.onload = function () {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
