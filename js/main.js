@@ -140,22 +140,22 @@ function drawOnCanvas(memeUrl) {
 
 function sendLocalStorage(){
 
-var y = document.getElementById('contact');
+    var elConatacForm = document.getElementById('contact');
     var cnt = [
     ];
-    cnt.name = y.elements[0].value ;
-    cnt.email = y.elements[1].value ;
-    cnt.subject = y.elements[2].value ;
-    cnt.text = y.elements[3].value ;
+    cnt.name = elConatacForm.elements[0].value ;
+    cnt.email = elConatacForm.elements[1].value ;
+    cnt.subject = elConatacForm.elements[2].value ;
+    cnt.text = elConatacForm.elements[3].value ;
 
 
-console.log(cnt);
-localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.email)
-+ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
-     y.elements[0].value= '' ;
-     y.elements[1].value= '' ;
-     y.elements[2].value= '' ;
-     y.elements[3].value= '' ;
+    console.log(cnt);
+    localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.email)
+    + JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
+    elConatacForm.elements[0].value= '' ;
+    elConatacForm.elements[1].value= '' ;
+    elConatacForm.elements[2].value= '' ;
+    elConatacForm.elements[3].value= '' ;
 
 }
 
@@ -170,16 +170,8 @@ function popSearch (){
            
            strHTML3 += ' ' + gMemes[i].keywords[j] + ' ';
          }
-       // }
    }
    console.log(gPopWords);
    elPop.innerHTML = strHTML3;
 }
 
-// function renderWords (){
-
-//     var elPop = document.querySelector('.popular');
-//     for (var i = 0; i < gPopWords.keywords.length; i++){
-//         elPop.innerHTML = gPopWords[i] + ' ';
-//     }
-// }
