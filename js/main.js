@@ -2,16 +2,16 @@
 
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
-var gTopTxt=  { align: '',
+var gTopTxt=  { align: 'center',
                 size: 30,
-                font: '',
-                color: '',
+                font: 'impact',
+                color: 'white',
                 shadow: '' }
 
-var gBottomTxt=  {  align: '',
+var gBottomTxt=  {  align: 'center',
                     size: 30,
-                    font: '',
-                    color: '',
+                    font: 'impact',
+                    color: 'white',
                     shadow: '' }
 var gMemes = [
             {id: 1, url: '../assets/img/1.jpg', keywords: ['sean', 'bean', 'lord of the rings']},
@@ -31,6 +31,7 @@ function appInit() {
     renderImgPreviews();
 }
 
+// renders meme gallery
 function renderImgPreviews() {
     var strHtml = '';
     var elGallery = document.querySelector('.innerGallery');
@@ -46,7 +47,7 @@ function renderImgPreviews() {
     })
 }
 
-
+// filters meme gallery by search input
 function filterImg() {
     var x = document.getElementById('search');
     var text = '';
@@ -79,14 +80,25 @@ function filterImg() {
         })
     }
 }
-
-function centerText(input) {
-    if(input === 'top') gTopTxt.align = 'center';
-    else {gBottomTxt.align = 'center'}
+// to do: seperate top and bottom text while still keeping code DRY
+function alignText(input, alignment) {
+    if(input === 'top') gTopTxt.align = alignment;
+    else {gBottomTxt.align = alignment}
 }
 
+function fontSize(input, mark) {
+    if(input === 'top') {
+        if(mark === 'plus') gTopTxt.size += 4;
+        else {gTopTxt.size -= 4}
+    }
+    else {
+        if(mark === 'plus') gBottomTxt.size += 4;
+        else {gBottomTxt.size -= 4}
+    }
+}
+
+// takes clicked meme and sets it up on canvas
 function memePicked(memeId) {
-    console.log(memeId);
     var memeUrl;
     gMemes.forEach(function(meme){
         if(memeId === meme.id) memeUrl = meme.url;
@@ -103,9 +115,21 @@ function drawOnCanvas(memeUrl) {
         document.querySelector('.top-text-input').addEventListener('input', function () {
             gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
             gCtx.save();
-            var stringTitle = document.querySelector('.top-text-input').value;
-            gCtx.font = '30px sans-serif';
-            gCtx.fillText(stringTitle, gCanvas.width / 2 , 30);
+            var stringTitle = document.querySelector('.top-text-input').value.toUpperCase();
+            gCtx.font = gTopTxt.size + 'px ' + gTopTxt.font;
+            gCtx.textAlign = gTopTxt.align;
+            gCtx.fillStyle = gTopTxt.color;
+            gCtx.fillText(stringTitle, gCanvas.width / 2 , 40);
+            gCtx.restore();
+        });
+        document.querySelector('.bottom-text-input').addEventListener('input', function () {
+            gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+            gCtx.save();
+            var stringTitle = document.querySelector('.bottom-text-input').value.toUpperCase();
+            gCtx.font = gBottomTxt.size + 'px ' + gBottomTxt.font;
+            gCtx.textAlign = gBottomTxt.align;
+            gCtx.fillStyle = gBottomTxt.color;
+            gCtx.fillText(stringTitle, gCanvas.width / 2 , gCanvas.height - 40);
             gCtx.restore();
         });
     };
