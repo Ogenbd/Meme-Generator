@@ -1,5 +1,6 @@
 'use strict';
 
+var gPopWords = {};
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
 var gTopTxt=  { align: '',
@@ -135,14 +136,26 @@ localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.ema
 }
 
 function popSearch (){
-   var popWords = {};
+
+    var strHTML3 = '';
+    var elPop = document.querySelector('.popular');
    for (var i = 0; i < gMemes.length; i++){
-       //for (var j=0; j< gMemes[i].keywords; j++){ 
          for (var j = 0; j < gMemes[i].keywords.length; j++){
-           if (popWords[gMemes[i].keywords[j]]) popWords[gMemes[i].keywords[j]]++;
-           else popWords[gMemes[i].keywords[j]] = 1;
+           if (gPopWords[gMemes[i].keywords[j]]) gPopWords[gMemes[i].keywords[j]]++;
+           else gPopWords[gMemes[i].keywords[j]] = 1;
+           
+           strHTML3 += ' ' + gMemes[i].keywords[j] + ' ';
          }
        // }
    }
-   console.log(popWords);
+   console.log(gPopWords);
+   elPop.innerHTML = strHTML3;
 }
+
+// function renderWords (){
+
+//     var elPop = document.querySelector('.popular');
+//     for (var i = 0; i < gPopWords.keywords.length; i++){
+//         elPop.innerHTML = gPopWords[i] + ' ';
+//     }
+// }
