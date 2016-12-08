@@ -1,4 +1,5 @@
 
+
 .main-nav {
     background-color: var(--nav-background-color);
     height: 63px;
@@ -6,7 +7,9 @@
     padding-bottom: 5px;
 
 
-    img {
+
+
+   img {
         padding-top: 10px;
     }
 
@@ -35,3 +38,42 @@
     z-index: -1;
     
 }
+
+ @media (max-width: $mobile-breakpoint) {
+
+    
+    
+     .square {
+    background-color: var(--nav-background-color);
+    transform: rotate(45deg); 
+    position: absolute;
+    left: 0; 
+    right: 10px; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    
+    }
+
+    
+
+ }
+
+ @media (max-width: 385) {
+ 
+
+ .main-nav {
+    background-color: var(--nav-background-color);
+    height: 63px;
+    margin-bottom: 60px;
+    padding-bottom: 5px;
+    right: -31px
+
+ }
+
+ .navIcon {
+       justify-content: space-around;
+
+ }
