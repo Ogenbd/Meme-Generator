@@ -110,3 +110,24 @@ function drawOnCanvas(memeUrl) {
         });
     };
 }
+
+function sendLocalStorage(){
+
+var y = document.getElementById('contact');
+    var cnt = [
+    ];
+    cnt.name = y.elements[0].value ;
+    cnt.email = y.elements[1].value ;
+    cnt.subject = y.elements[2].value ;
+    cnt.text = y.elements[3].value ;
+
+
+console.log(cnt);
+localStorage.setItem('contact' , JSON.stringify(cnt.name)+ JSON.stringify(cnt.name)
+ + JSON.stringify(cnt.email)+ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
+     y.elements[0].value= '' ;
+     y.elements[1].value= '' ;
+     y.elements[2].value= '' ;
+     y.elements[3].value= '' ;
+
+}

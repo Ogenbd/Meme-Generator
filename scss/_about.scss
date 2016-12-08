@@ -81,12 +81,12 @@
 
 .ogen {
     background-image: url("../assets/img/ogen.jpg");
-    margin: 100px;
+    margin: 50px;
 }
 
 .or {
     background-image: url("../assets/img/or.png");
-    margin:100px;
+    margin:50px;
     order:2
 
 }
@@ -95,14 +95,14 @@
 .p1 {
   color:black;
   line-height: 0.9cm;
-  padding: 90px;
+  padding: 45px;
   width: 70%;
   flex-shrink: 1;
 }
 .tumbrow {
      display: flex;
     align-items: flex-end;
-    padding:10px;
+    padding: 5px;
     order:3;
 }
 .tumb {
@@ -115,20 +115,6 @@
 
 }
 
-//.facebook{
-    
-    //background-image:url("../assets/img/facebook_opt.png");
- //   }
-
-// .twitter{
-    
-//     background-image:url("../assets/img/twitter_opt.jpg"); 
-//     }
-
-// .linkdin{
-    
-//     background-image:url("../assets/img/linkdin_opt.png"); 
-//     }
 
 
 @media screen and (max-width:700px){
@@ -137,6 +123,7 @@ article {
   flex-wrap: wrap; 
   
 }
+
 
 
 .p1 {
