@@ -1,4 +1,7 @@
 
+.burger{
+    display: none;
+}
 .main-nav {
     background-color: var(--nav-background-color);
     height: 63px;
@@ -6,7 +9,9 @@
     padding-bottom: 5px;
 
 
-    img {
+
+
+   img {
         padding-top: 10px;
     }
 
@@ -35,3 +40,56 @@
     z-index: -1;
     
 }
+
+ @media (max-width: $mobile-breakpoint) {
+
+     .burger {
+         display: block;
+     }
+    
+    
+     .triangle {
+        display: none;
+     }
+
+.main-nav {
+    background-color: var(--nav-background-color);
+    height: 63px;
+    margin-bottom: 60px;
+    padding-bottom: 5px;
+    display:flex;
+    flex-direction: column;
+
+
+
+
+   img {
+        padding-top: 10px;
+    }
+
+    a {
+        padding: 0px 20px;
+        color: white;
+    }
+
+    a:hover {
+        color: #2eb398;
+        transition-duration: 0.3s;
+    }
+}
+        
+
+
+ }
+
+//  @media (max-width: 385) {
+ 
+
+//  .main-nav {
+//     background-color: var(--nav-background-color);
+//     height: 63px;
+//     margin-bottom: 60px;
+//     padding-bottom: 5px;
+//     right: -31px
+
+//  }
