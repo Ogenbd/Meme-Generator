@@ -1,5 +1,7 @@
 
-
+.burger{
+    display: none;
+}
 .main-nav {
     background-color: var(--nav-background-color);
     height: 63px;
@@ -41,39 +43,53 @@
 
  @media (max-width: $mobile-breakpoint) {
 
+     .burger {
+         display: block;
+     }
     
     
-     .square {
-    background-color: var(--nav-background-color);
-    transform: rotate(45deg); 
-    position: absolute;
-    left: 0; 
-    right: 10px; 
-    margin-left: auto; 
-    margin-right: auto;
-    width: 100px;
-    height: 100px;
-    z-index: -1;
-    
-    }
+     .triangle {
+        display: none;
+     }
 
-    
-
- }
-
- @media (max-width: 385) {
- 
-
- .main-nav {
+.main-nav {
     background-color: var(--nav-background-color);
     height: 63px;
     margin-bottom: 60px;
     padding-bottom: 5px;
-    right: -31px
+    display:flex;
+    flex-direction: column;
+
+
+
+
+   img {
+        padding-top: 10px;
+    }
+
+    a {
+        padding: 0px 20px;
+        color: white;
+    }
+
+    a:hover {
+        color: #2eb398;
+        transition-duration: 0.3s;
+    }
+}
+        
+
 
  }
 
- .navIcon {
-       justify-content: space-around;
+//  @media (max-width: 385) {
+ 
 
- }
+//  .main-nav {
+//     background-color: var(--nav-background-color);
+//     height: 63px;
+//     margin-bottom: 60px;
+//     padding-bottom: 5px;
+//     right: -31px
+
+//  }
