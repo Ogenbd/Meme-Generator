@@ -1,5 +1,6 @@
 'use strict';
 
+var gPopWords = {};
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
 var gTopTxt=  { align: 'center',
@@ -27,8 +28,10 @@ var gMemes = [
             {id: 11, url: '../assets/img/11.jpg', keywords: ['kid', 'you tell me']},
             {id: 12, url: '../assets/img/12.jpg', keywords: ['star trek', 'pikard']}];
 
+
 function appInit() {
     renderImgPreviews();
+    popSearch();
 }
 
 // renders meme gallery
@@ -147,11 +150,36 @@ var y = document.getElementById('contact');
 
 
 console.log(cnt);
-localStorage.setItem('contact' , JSON.stringify(cnt.name)+ JSON.stringify(cnt.name)
- + JSON.stringify(cnt.email)+ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
+localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.email)
++ JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
      y.elements[0].value= '' ;
      y.elements[1].value= '' ;
      y.elements[2].value= '' ;
      y.elements[3].value= '' ;
 
 }
+
+function popSearch (){
+
+    var strHTML3 = '';
+    var elPop = document.querySelector('.popular');
+   for (var i = 0; i < gMemes.length; i++){
+         for (var j = 0; j < gMemes[i].keywords.length; j++){
+           if (gPopWords[gMemes[i].keywords[j]]) gPopWords[gMemes[i].keywords[j]]++;
+           else gPopWords[gMemes[i].keywords[j]] = 1;
+           
+           strHTML3 += ' ' + gMemes[i].keywords[j] + ' ';
+         }
+       // }
+   }
+   console.log(gPopWords);
+   elPop.innerHTML = strHTML3;
+}
+
+// function renderWords (){
+
+//     var elPop = document.querySelector('.popular');
+//     for (var i = 0; i < gPopWords.keywords.length; i++){
+//         elPop.innerHTML = gPopWords[i] + ' ';
+//     }
+// }
