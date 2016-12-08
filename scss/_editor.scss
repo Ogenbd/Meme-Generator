@@ -1,21 +1,33 @@
-
+.meme-editor {
+  margin: 10px 0;
+  text-align: center;
+}
   
-  .chosen-image{
-    width: 50%;
+.chosen-image{
+  width: 50%;
 }
 
-  .text-editor {
+.text-editor {
   width: 50%;
   background-color: teal;
   }
 
 
+.canvas-area {
+  width: 400px;
+  margin: auto auto;
+}
+
+.bottom-text {
+  margin-top: 50px;
+}
+
 @media screen and (max-width:499px){
 
 .chosen-image{
-      width: 100%;
+  width: 100%;
 }
-  .text-editor {
+.text-editor {
   width: 100%;
   background-color: teal;
   }
@@ -23,6 +35,3 @@
   
 }
 
-.canvas {
-  width: 300px;
-}

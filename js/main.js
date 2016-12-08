@@ -1,5 +1,18 @@
 'use strict';
 
+var gCanvas = document.querySelector('.canvas');
+var gCtx = gCanvas.getContext('2d');
+var gTopTxt=  { align: '',
+                size: 30,
+                font: '',
+                color: '',
+                shadow: '' }
+
+var gBottomTxt=  {  align: '',
+                    size: 30,
+                    font: '',
+                    color: '',
+                    shadow: '' }
 var gMemes = [
             {id: 1, url: '../assets/img/1.jpg', keywords: ['sean', 'bean', 'lord of the rings']},
             {id: 2, url: '../assets/img/2.jpg', keywords: ['animal', 'awkward', 'seal']},
@@ -25,7 +38,7 @@ function renderImgPreviews() {
     var elGallery = document.querySelector('.innerGallery');
     gMemes.forEach(function (meme) {
         strHtml += '<div class="meme"><div class="hexagon meme' + meme.id
-            + '"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
+            + '" onclick="memePicked('+ meme.id +')"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
     });
 
     elGallery.innerHTML = strHtml;
@@ -58,7 +71,7 @@ function filterImg() {
 
         filterdImg.forEach(function (meme) {
             strHtml2 += '<div class="meme"><div class="hexagon meme' + meme.id
-                + '"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
+                + '" onclick="memePicked('+ meme.id +')"><div class="hexTop"></div><div class="hexBottom"></div></div></div>';
         });
 
         elGallery.innerHTML = strHtml2;
@@ -67,6 +80,37 @@ function filterImg() {
             elMeme.style.backgroundImage = 'url(' + meme.url + ')';
         })
     }
+}
+
+function centerText(input) {
+    if(input === 'top') gTopTxt.align = 'center';
+    else {gBottomTxt.align = 'center'}
+}
+
+function memePicked(memeId) {
+    console.log(memeId);
+    var memeUrl;
+    gMemes.forEach(function(meme){
+        if(memeId === meme.id) memeUrl = meme.url;
+    });
+    drawOnCanvas(memeUrl);
+}
+
+function drawOnCanvas(memeUrl) {
+    var img = new Image();
+    img.src = memeUrl;
+
+    img.onload = function () {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+        document.querySelector('.top-text-input').addEventListener('input', function () {
+            gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+            gCtx.save();
+            var stringTitle = document.querySelector('.top-text-input').value;
+            gCtx.font = '30px sans-serif';
+            gCtx.fillText(stringTitle, gCanvas.width / 2 , 30);
+            gCtx.restore();
+        });
+    };
 }
 
 function sendLocalStorage(){
