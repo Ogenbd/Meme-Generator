@@ -1,17 +1,24 @@
 'use strict';
 
 var gPopWords = {};
+var gMemeUrl;
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
 var gImg;
 var gTopTxt=  { align: 'center',
+                anchor:   {x: gCanvas.width / 2, 
+                           y: 30},
                 size: 30,
+                text: '',
                 font: 'impact',
                 color: 'white',
                 shadow: '' }
 
 var gBottomTxt=  {  align: 'center',
+                    anchor:    {x: gCanvas.width / 2, 
+                                y: gCanvas.height -10},
                     size: 30,
+                    text: '',
                     font: 'impact',
                     color: 'white',
                     shadow: '' }
@@ -23,16 +30,27 @@ var gMemes = [
             {id: 5, url: '../assets/img/5.jpg', keywords: ['buzz', 'cartoon', 'space']},
             {id: 6, url: '../assets/img/6.jpg', keywords: ['winter is coming', 'person','game of thrones']},
             {id: 7, url: '../assets/img/7.jpg', keywords: ['person', 'cartoon', 'first world problems']},
-            {id: 8, url: '../assets/img/8.jpg', keywords: ['person', 'rich kid']},
+            {id: 8, url: '../assets/img/8.jpg', keywords: ['person', 'bad luck']},
             {id: 9, url: '../assets/img/9.jpg', keywords: ['kermit', 'cartoon']},
             {id: 10, url: '../assets/img/10.jpg', keywords: ['baby', 'success']},
             {id: 11, url: '../assets/img/11.jpg', keywords: ['kid', 'you tell me']},
-            {id: 12, url: '../assets/img/12.jpg', keywords: ['star trek', 'pikard']}];
+            {id: 12, url: '../assets/img/12.jpg', keywords: ['star trek', 'picard']}];
 
 
 function appInit() {
     renderImgPreviews();
+    waitForInput();
     // popSearch();
+}
+
+
+function burgerMenu() {
+    var nav = document.getElementById('nav');
+    if (nav.className === 'main-nav') {
+        nav.className += ' responsive';
+    } else {
+        nav.className = 'main-nav';
+    }
 }
 
 // renders meme gallery
@@ -85,87 +103,116 @@ function filterImg() {
     }
 }
 // to do: seperate top and bottom text while still keeping code DRY
-function alignText(input, alignment) {
-    if(input === 'top') gTopTxt.align = alignment;
-    else {gBottomTxt.align = alignment}
-}
-
-function fontSize(input, mark) {
+function alignText(input, alignment, placement) {
     if(input === 'top') {
-        if(mark === 'plus') gTopTxt.size += 4;
-        else {gTopTxt.size -= 4}
+        gTopTxt.align = alignment;
+        gTopTxt.anchor.x = placement;
     }
     else {
-        if(mark === 'plus') gBottomTxt.size += 4;
-        else {gBottomTxt.size -= 4}
-    }
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+        gBottomTxt.align = alignment;
+        gBottomTxt.anchor.x = placement;
+        }
+    drawOnCanvas();
 }
 
-// takes clicked meme and sets it up on canvas
+function changeFontSize(input, changeValue) {
+    if(input === 'top') gTopTxt.size += changeValue;
+    else gBottomTxt.size += changeValue;
+    drawOnCanvas();
+}
+
+function changeFontColor(input, color) {
+    if(input === 'top') gTopTxt.color = color;
+    else gBottomTxt.color = color;
+    drawOnCanvas();
+}
+
+function changeFont(input, font) {
+    if(input === 'top') gTopTxt.font = font;
+    else gBottomTxt.font = font;
+    drawOnCanvas();
+}
+
+
 function memePicked(memeId) {
     var elGallery = document.querySelector('.gallery');
-    var elEditor = document.querySelector('.meme-editor')
-    var memeUrl;
-    gMemes.forEach(function(meme){
-        if(memeId === meme.id) memeUrl = meme.url;
+    var elEditor = document.querySelector('.meme-editor');
+    gMemes.forEach(function(meme) {
+        if (memeId === meme.id) gMemeUrl = meme.url;
     });
-    elGallery.style.visibility = 'hidden';
-    // elEditor.style.position = 'static';
+    // elGallery.style.visibility = 'hidden';
     elEditor.style.visibility = 'visible';
-    console.log(elEditor);
-    elEditor.style.width = '100%';
-    drawOnCanvas(memeUrl);
+    // elGallery.style.height = '0px'
+    elEditor.style.height = gCanvas.height + 300 + 'px'
+    elEditor.style.marginBottom = '10px'
+    drawOnCanvas();
 }
 
-function drawOnCanvas(memeUrl) {
+// catches input in the meme editor text inputs
+function waitForInput() {
+    document.querySelector('.top-text-input').addEventListener('input', function() {
+        gTopTxt.text = document.querySelector('.top-text-input').value.toUpperCase();
+        drawOnCanvas();
+    });
+    document.querySelector('.bottom-text-input').addEventListener('input', function() {
+        gBottomTxt.text = document.querySelector('.bottom-text-input').value.toUpperCase();
+        drawOnCanvas();
+    });
+}
+
+// sets image on canvas
+function drawOnCanvas() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     gImg = new Image();
-    gImg.src = memeUrl;
-
-    gImg.onload = function () {
+    gImg.src = gMemeUrl;
+    gImg.onload = function() {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
-        document.querySelector('.top-text-input').addEventListener('input', function () {
-            gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
-            gCtx.save();
-            var stringTitle = document.querySelector('.top-text-input').value.toUpperCase();
-            gCtx.font = gTopTxt.size + 'px ' + gTopTxt.font;
-            gCtx.textAlign = gTopTxt.align;
-            gCtx.fillStyle = gTopTxt.color;
-            gCtx.fillText(stringTitle, gCanvas.width / 2 , 30);
-            gCtx.restore();
-        });
-        document.querySelector('.bottom-text-input').addEventListener('input', function () {
-            gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
-            gCtx.save();
-            var stringTitle = document.querySelector('.bottom-text-input').value.toUpperCase();
-            gCtx.font = gBottomTxt.size + 'px ' + gBottomTxt.font;
-            gCtx.textAlign = gBottomTxt.align;
-            gCtx.fillStyle = gBottomTxt.color;
-            gCtx.fillText(stringTitle, gCanvas.width / 2 , gCanvas.height - 20);
-            gCtx.restore();
-        });
-    };
+        writeText(gCtx, gTopTxt);
+        writeText(gCtx, gBottomTxt);
+    }
+
+
+// whites text on canvas
+function writeText(ctx, txt) {
+    ctx.font = txt.size + 'px ' + txt.font;
+    ctx.textAlign = txt.align;
+    ctx.fillStyle = txt.color;
+    ctx.fillText(txt.text, txt.anchor.x, txt.anchor.y);
 }
 
-function sendLocalStorage(){
+function downloadImg(elLink) {
+    elLink.href = gCanvas.toDataURL();
+    elLink.download = 'Meme.jpg';
+    }
+
+// function backToGallery() {
+//     var elGallery = document.querySelector('.gallery');
+//     var elEditor = document.querySelector('.meme-editor');
+//     elGallery.style.visibility = 'visible';
+//     elEditor.style.visibility = 'hidden';
+//     elEditor.style.height = '0px';
+// }
+
+function sendLocalStorage() {
 
     var elConatacForm = document.getElementById('contact');
     var cnt = [
     ];
-    cnt.name = elConatacForm.elements[0].value ;
-    cnt.email = elConatacForm.elements[1].value ;
-    cnt.subject = elConatacForm.elements[2].value ;
-    cnt.text = elConatacForm.elements[3].value ;
+    cnt.name = elConatacForm.elements[0].value;
+    cnt.email = elConatacForm.elements[1].value;
+    cnt.subject = elConatacForm.elements[2].value;
+    cnt.text = elConatacForm.elements[3].value;
 
 
     console.log(cnt);
-    localStorage.setItem(cnt.name , JSON.stringify(cnt.name)+ JSON.stringify(cnt.email)
-    + JSON.stringify(cnt.subject)+ JSON.stringify(cnt.text));
-    elConatacForm.elements[0].value= '' ;
-    elConatacForm.elements[1].value= '' ;
-    elConatacForm.elements[2].value= '' ;
-    elConatacForm.elements[3].value= '' ;
+    localStorage.setItem(cnt.name, JSON.stringify(cnt.name) + JSON.stringify(cnt.email)
+        + JSON.stringify(cnt.subject) + JSON.stringify(cnt.text));
+    elConatacForm.elements[0].value = '';
+    elConatacForm.elements[1].value = '';
+    elConatacForm.elements[2].value = '';
+    elConatacForm.elements[3].value = '';
 
+    }
 }
 
 // function popSearch (){

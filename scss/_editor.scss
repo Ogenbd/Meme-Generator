@@ -1,10 +1,10 @@
 .meme-editor {
-  width: 0;
+  height: 0;
+
   visibility: hidden;
-  position: absolute;
-  margin: 10px 0;
+  margin-top: 50px;
   text-align: center;
-  transition: width 0.5s ease;
+  transition: height 0.5s;
 }
   
 .chosen-image{
@@ -15,22 +15,38 @@
   width: 50%;
   }
 
+.text-editor button {
+  border-radius: 20px;
+  font-family: 'Playfair';
+  background-color: black;
+  color: white;
+}
 
-.canvas-area {
-  width: 100%;
-  margin: auto auto;
+.text-editor input {
+  background-color: black;
+  color:white;
 }
 
 .canvas {
   width: 100%;
-  height: auto;
+
+}
+
+.top-text {
+  margin-top: 50px;
 }
 
 .bottom-text {
   margin-top: 50px;
 }
 
-@media screen and (max-width:499px){
+.download {
+  margin-top: 20px;
+}
+
+
+
+@media screen and (max-width:580px){
 
 .chosen-image{
   width: 100%;

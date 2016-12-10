@@ -1,95 +1,57 @@
-
-.burger{
-    display: none;
-}
-.main-nav {
+ul.main-nav {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: var(--nav-background-color);
-    height: 63px;
-    margin-bottom: 60px;
-    padding-bottom: 5px;
-
-
-
-
-   img {
-        padding-top: 10px;
-    }
-
-    a {
-        padding: 0px 20px;
-        color: white;
-    }
-
-    a:hover {
-        color: #2eb398;
-        transition-duration: 0.3s;
-    }
+    z-index: 3;
 }
 
+ul.main-nav li {float: left;}
 
-.square {
-    background-color: var(--nav-background-color);
-    transform: rotate(45deg); 
-    position: absolute;
-    left: 0; 
-    right: 10px; 
-    margin-left: auto; 
-    margin-right: auto;
-    width: 100px;
-    height: 100px;
-    z-index: -1;
-    
+ul.main-nav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
 }
 
- @media (max-width: $mobile-breakpoint) {
-
-     .burger {
-         display: block;
-     }
-    
-    
-     .triangle {
-        display: none;
-     }
-
-.main-nav {
-    background-color: var(--nav-background-color);
-    height: 63px;
-    margin-bottom: 60px;
-    padding-bottom: 5px;
-    display:flex;
-    flex-direction: column;
+ul.main-nav li a:hover {
+    background-color: #555;
+    color: #2eb398;}
 
 
+ul.main-nav li.icon {display: none;}
 
-
-   img {
-        padding-top: 10px;
-    }
-
-    a {
-        padding: 0px 20px;
-        color: white;
-    }
-
-    a:hover {
-        color: #2eb398;
-        transition-duration: 0.3s;
-    }
+@media screen and (max-width:600px) {
+  ul.main-nav li:not(:first-child) {display: none;}
+  ul.main-nav li.icon {
+    float: right;
+    display: inline-block;
+  }
 }
-        
 
-
- }
-
-//  @media (max-width: 385) {
- 
-
-//  .main-nav {
-//     background-color: var(--nav-background-color);
-//     height: 63px;
-//     margin-bottom: 60px;
-//     padding-bottom: 5px;
-//     right: -31px
-
-//  }
+@media screen and (max-width:600px) {
+  ul.main-nav.responsive {position: fixed;}
+  ul.main-nav.responsive li.icon {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 3;
+  }
+  
+  ul.main-nav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.main-nav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
