@@ -29,7 +29,7 @@ ul.main-nav li a:hover {
 
 ul.main-nav li.icon {display: none;}
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:750px) {
   ul.main-nav li:not(:first-child) {display: none;}
   ul.main-nav li.icon {
     float: right;
@@ -37,7 +37,7 @@ ul.main-nav li.icon {display: none;}
   }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:750px) {
   ul.main-nav.responsive {position: fixed;}
   ul.main-nav.responsive li.icon {
     position: fixed;
